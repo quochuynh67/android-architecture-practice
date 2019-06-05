@@ -19,6 +19,7 @@ class MainApp : MultiDexApplication(), HasActivityInjector {
         init()
     }
 
+    
     private fun init() {
         DaggerAppComponent.builder()
             .application(this)
