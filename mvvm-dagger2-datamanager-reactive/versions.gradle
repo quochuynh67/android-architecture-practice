@@ -1,0 +1,280 @@
+/**
+ * Shared file between builds so that they can all use the same dependencies and
+ * maven repositories.
+ **/
+ext.deps = [:]
+
+def build_versions = [:]
+build_versions.min_sdk = 19
+build_versions.target_sdk = 28
+build_versions.build_tools = "28.0.3"
+ext.build_versions = build_versions
+
+def versions = [:]
+
+versions.dagger = "2.16"
+
+versions.android_gradle_plugin = '3.3.2'
+versions.kotlin = "1.3.21"
+
+versions.support = "28.0.0"
+versions.constraint_layout = "1.1.3"
+versions.flexbox = "1.0.0"
+versions.gson = "2.8.5"
+versions.jsoup = "1.11.3"
+versions.multidex = "1.0.3"
+
+versions.arch_core = "1.1.1"
+versions.room = "1.1.1"
+versions.lifecycle = "1.1.1"
+
+// Firebase
+versions.firebase_core = "16.0.7"
+versions.firebase_messaging = "17.3.4"
+
+// Google Play Services
+versions.google_play_services = "4.0.1"
+versions.play_services_base = "16.1.0"
+versions.play_services_auth = "16.0.0"
+
+versions.paging = "1.0.1"
+versions.navigation = "1.0.0-alpha04"
+versions.work = "1.0.0-alpha08"
+
+versions.rx_java = "2.2.5"
+versions.rx_android = "2.1.0"
+versions.rx_kotlin = "2.2.0"
+versions.event_bus = "3.1.1"
+
+// Test
+versions.junit = "4.12"
+versions.espresso = "3.0.2"
+versions.mockito = "2.7.19"
+versions.mockito_all = "1.10.19"
+versions.atsl_runner = "1.0.1"
+versions.atsl_rules = "1.0.1"
+
+// Image Loader
+versions.glide = "4.9.0"
+versions.shape_image_view = "0.9.3"
+versions.circle_imgview = "2.2.0"
+versions.ucrop = "2.2.2"
+
+// Logger
+versions.timber = "4.5.1"
+versions.findbugs = "3.0.2"
+versions.crashlytics = "2.9.6"
+versions.crashlytics_gradle = "1.25.4"
+versions.debug_db = "1.0.4"
+versions.leakcanary = "1.6.3"
+
+// Networking
+versions.android_networking = "1.0.2"
+versions.retrofit = "2.5.0"
+
+// View
+versions.material_dialog = "0.9.6.0"
+versions.butter_knife = "8.8.1"
+
+// Social Network
+versions.facebook = "4.38.1"
+versions.kakao = "1.15.1"
+versions.naver = "4.2.0"
+
+// Amazon
+versions.amazon_aws = "2.6.31"
+
+def deps = [:]
+
+deps.google_play_services = "com.google.gms:google-services:$versions.google_play_services"
+deps.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
+
+def support = [:]
+support.annotations = "com.android.support:support-annotations:$versions.support"
+support.app_compat = "com.android.support:appcompat-v7:$versions.support"
+support.recyclerview = "com.android.support:recyclerview-v7:$versions.support"
+support.cardview = "com.android.support:cardview-v7:$versions.support"
+support.design = "com.android.support:design:$versions.support"
+support.v4 = "com.android.support:support-v4:$versions.support"
+support.customtabs = "com.android.support:customtabs:$versions.support"
+support.vector_drawable = "com.android.support:support-vector-drawable:$versions.support"
+support.core_utils = "com.android.support:support-core-utils:$versions.support"
+support.constraint_layout = "com.android.support.constraint:constraint-layout:$versions.constraint_layout"
+support.flexbox = "com.google.android:flexbox:$versions.flexbox"
+support.multidex = "com.android.support:multidex:$versions.multidex"
+deps.support = support
+
+def room = [:]
+room.runtime = "android.arch.persistence.room:runtime:$versions.room"
+room.compiler = "android.arch.persistence.room:compiler:$versions.room"
+room.rxjava2 = "android.arch.persistence.room:rxjava2:$versions.room"
+room.testing = "android.arch.persistence.room:testing:$versions.room"
+deps.room = room
+
+def lifecycle = [:]
+lifecycle.runtime = "android.arch.lifecycle:runtime:$versions.lifecycle"
+lifecycle.extensions = "android.arch.lifecycle:extensions:$versions.lifecycle"
+lifecycle.java8 = "android.arch.lifecycle:common-java8:$versions.lifecycle"
+lifecycle.compiler = "android.arch.lifecycle:compiler:$versions.lifecycle"
+deps.lifecycle = lifecycle
+
+def work = [:]
+work.runtime = "android.arch.work:work-runtime:$versions.work"
+work.testing = "android.arch.work:work-testing:$versions.work"
+work.firebase = "android.arch.work:work-firebase:$versions.work"
+work.runtime_ktx = "android.arch.work:work-runtime-ktx:$versions.work"
+deps.work = work
+
+def navigation = [:]
+navigation.runtime = "android.arch.navigation:navigation-runtime:$versions.navigation"
+navigation.runtime_ktx = "android.arch.navigation:navigation-runtime-ktx:$versions.navigation"
+navigation.fragment = "android.arch.navigation:navigation-fragment:$versions.navigation"
+navigation.fragment_ktx = "android.arch.navigation:navigation-fragment-ktx:$versions.navigation"
+navigation.safe_args_plugin = "android.arch.navigation:navigation-safe-args-gradle-plugin:$versions.navigation"
+deps.navigation = navigation
+
+def arch_core = [:]
+arch_core.testing = "android.arch.core:core-testing:$versions.arch_core"
+deps.arch_core = arch_core
+
+def firebase = [:]
+firebase.core = "com.google.firebase:firebase-core:$versions.firebase_core"
+firebase.messaging = "com.google.firebase:firebase-messaging:$versions.firebase_messaging"
+deps.firebase = firebase
+
+def play_services = [:]
+play_services.base = "com.google.android.gms:play-services-base:$versions.play_services_base"
+play_services.auth = "com.google.android.gms:play-services-auth:$versions.play_services_auth"
+deps.play_services = play_services
+
+def parser = [:]
+parser.gson = "com.google.code.gson:gson:$versions.gson"
+parser.jsoup = "org.jsoup:jsoup:$versions.jsoup"
+deps.parser = parser
+
+def kotlin = [:]
+kotlin.stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
+kotlin.test = "org.jetbrains.kotlin:kotlin-test-junit:$versions.kotlin"
+kotlin.plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+kotlin.allopen = "org.jetbrains.kotlin:kotlin-allopen:$versions.kotlin"
+deps.kotlin = kotlin
+
+def espresso = [:]
+espresso.core = "com.android.support.test.espresso:espresso-core:$versions.espresso"
+espresso.contrib = "com.android.support.test.espresso:espresso-contrib:$versions.espresso"
+espresso.intents = "com.android.support.test.espresso:espresso-intents:$versions.espresso"
+deps.espresso = espresso
+
+def atsl = [:]
+atsl.runner = "com.android.support.test:runner:$versions.atsl_runner"
+atsl.rules = "com.android.support.test:rules:$versions.atsl_runner"
+atsl.junit = "junit:junit:$versions.junit"
+deps.atsl = atsl
+
+def mockito = [:]
+mockito.core = "org.mockito:mockito-core:$versions.mockito"
+mockito.all = "org.mockito:mockito-all:$versions.mockito_all"
+deps.mockito = mockito
+
+def glide = [:]
+glide.runtime = "com.github.bumptech.glide:glide:$versions.glide"
+glide.compiler = "com.github.bumptech.glide:compiler:$versions.glide"
+deps.glide = glide
+
+def picasso = [:]
+picasso.runtime = "com.squareup.picasso:picasso:$versions.picasso"
+deps.picasso = picasso
+
+def images = [:]
+images.shape_img = "com.github.siyamed:android-shape-imageview:$versions.shape_image_view@aar"
+images.circle_img = "de.hdodenhof:circleimageview:$versions.circle_imgview"
+images.ucrop = "com.github.yalantis:ucrop:$versions.ucrop"
+deps.images = images
+
+def views = [:]
+views.lottie = "com.airbnb.android:lottie:$versions.lottie"
+views.calligraphy = "uk.co.chrisjenx:calligraphy:$versions.calligraphy"
+deps.views = views
+
+def calligraphy = [:]
+calligraphy.calligraphy = "io.github.inflationx:calligraphy3:$versions.calligraphy"
+calligraphy.viewpump = "io.github.inflationx:viewpump:$versions.viewpump"
+deps.calligraphy = calligraphy
+
+def rx = [:]
+rx.java = "io.reactivex.rxjava2:rxjava:$versions.rx_java"
+rx.android = "io.reactivex.rxjava2:rxandroid:$versions.rx_android"
+rx.kotlin = "io.reactivex.rxjava2:rxkotlin:$versions.rx_kotlin"
+deps.rx = rx
+
+def network = [:]
+network.runtime = "com.amitshekhar.android:android-networking:$versions.android_networking"
+network.rxjava2 = "com.amitshekhar.android:rx2-android-networking:$versions.android_networking"
+network.retrofit = "com.squareup.retrofit2:retrofit:$versions.retrofit"
+network.retrofit_rx = "com.squareup.retrofit2:adapter-rxjava:$versions.retrofit"
+deps.network = network
+
+def material_dialog = [:]
+material_dialog.core = "com.afollestad.material-dialogs:core:$versions.material_dialog"
+material_dialog.color = "com.afollestad.material-dialogs:color:$versions.material_dialog"
+material_dialog.files = "com.afollestad.material-dialogs:files:$versions.material_dialog"
+material_dialog.input = "com.afollestad.material-dialogs:input:$versions.material_dialog"
+deps.material_dialog = material_dialog
+
+def butter_knife = [:]
+butter_knife.runtime = "com.jakewharton:butterknife:$versions.butter_knife"
+butter_knife.compiler = "com.jakewharton:butterknife-compiler:$versions.butter_knife"
+deps.butter_knife = butter_knife
+
+def logger = [:]
+logger.timber = "com.jakewharton.timber:timber:$versions.timber"
+logger.findbugs = "com.google.code.findbugs:jsr305:$versions.findbugs"
+logger.crashlytics = "com.crashlytics.sdk.android:crashlytics:${versions.crashlytics}@aar"
+logger.crashlytics_gradle = "io.fabric.tools:gradle:$versions.crashlytics_gradle"
+logger.debug_db = "com.amitshekhar.android:debug-db:$versions.debug_db"
+deps.logger = logger
+
+def leakcanary = [:]
+leakcanary.debug = "com.squareup.leakcanary:leakcanary-android:$versions.leakcanary"
+leakcanary.release = "com.squareup.leakcanary:leakcanary-android-no-op:$versions.leakcanary"
+leakcanary.support = "com.squareup.leakcanary:leakcanary-support-fragment:$versions.leakcanary"
+deps.leakcanary = leakcanary
+
+def social = [:]
+social.facebook = "com.facebook.android:facebook-android-sdk:$versions.facebook"
+social.kakao_usermgmt = "com.kakao.sdk:usermgmt:$versions.kakao"
+social.kakao_talk = "com.kakao.sdk:kakaotalk:$versions.kakao"
+social.kakao_link = "com.kakao.sdk:kakaolink:$versions.kakao"
+social.naver = "com.naver.nid:naveridlogin-android-sdk:$versions.naver"
+deps.social = social
+
+def event_bus = [:]
+event_bus.runtime = "org.greenrobot:eventbus:$versions.event_bus"
+deps.event_bus = event_bus
+
+def amazon = [:]
+amazon.sdk_s3 = "com.amazonaws:aws-android-sdk-s3:$versions.amazon_aws"
+deps.amazon = amazon
+
+def dagger = [:]
+dagger.runtime = "com.google.dagger:dagger:$versions.dagger"
+dagger.android = "com.google.dagger:dagger-android:$versions.dagger"
+dagger.android_support = "com.google.dagger:dagger-android-support:$versions.dagger"
+dagger.compiler = "com.google.dagger:dagger-compiler:$versions.dagger"
+dagger.android_support_compiler = "com.google.dagger:dagger-android-processor:$versions.dagger"
+deps.dagger = dagger
+
+ext.deps = deps
+
+def static addRepos(RepositoryHandler handler) {
+    handler.google()
+    handler.jcenter()
+    handler.mavenCentral()
+    handler.maven { url 'https://jitpack.io' }
+    handler.maven { url 'https://maven.fabric.io/public' }
+    handler.maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    handler.maven { url 'http://devrepo.kakao.com:8088/nexus/content/groups/public/' }
+    handler.flatDir { dirs 'libs' }
+}
+
+ext.addRepos = this.&addRepos
