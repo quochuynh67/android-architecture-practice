@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="viewModel_"
+                  type="com.example.footballapp.ui.main.MainActivityViewModel"/>
+    </data>
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".ui.main.MainActivity">
+
+        <Button android:layout_centerInParent="true"
+                android:layout_width="match_parent"
+                android:onClick="@{()-> viewModel_.onButtonClick()}"
+                android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+</layout>

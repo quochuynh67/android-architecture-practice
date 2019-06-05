@@ -1,0 +1,189 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+apply plugin: 'org.jetbrains.kotlin.android.extensions'
+
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.example.footballapp"
+        minSdkVersion 15
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    splits {
+        // Configures multiple APKs based on ABI.
+        abi {
+            // Enables building multiple APKs per ABI.
+            enable false
+        }
+        density {
+            enable false
+            // exclude 'ldpi', 'tvdpi', 'xxxhdpi'
+            // include 'mdpi', 'hdpi', 'xhdpi', 'xxhdpi'
+            // compatibleScreens 'small', 'normal', 'large', 'xlarge'
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/MANIFEST.MF'
+        exclude 'META-INF/INDEX.LIST'
+        exclude 'META-INF/DEPENDENCIES'
+    }
+
+    androidExtensions {
+        experimental = true
+    }
+
+    dexOptions {
+        preDexLibraries true
+        javaMaxHeapSize "2g"
+    }
+
+    aaptOptions {
+        cruncherEnabled = false
+    }
+
+    kapt {
+        useBuildCache = true
+    }
+}
+configurations.all {
+    resolutionStrategy.force deps.support.annotations
+    resolutionStrategy.force deps.logger.findbugs
+}
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    // Kotlin
+    implementation deps.kotlin.stdlib
+
+    //Koin - Dependency injection
+    implementation deps.koin.android
+
+
+    // Google - Android Support Library
+    implementation deps.support.app_compat
+    implementation deps.support.recyclerview
+    implementation deps.support.cardview
+    implementation deps.support.design
+    implementation deps.support.customtabs
+    implementation deps.support.v4
+    implementation deps.support.vector_drawable
+    implementation deps.support.constraint_layout
+    implementation deps.support.multidex
+
+    // Google - Android: Lifecycle, ViewModel
+    implementation deps.lifecycle.runtime
+    implementation deps.lifecycle.extensions
+    implementation deps.lifecycle.java8
+    implementation 'com.google.android.gms:play-services-maps:16.1.0'
+    implementation 'com.google.android.gms:play-services-location:16.0.0'
+    kapt deps.lifecycle.compiler
+
+    // Google - Room Database
+    implementation deps.room.rxjava2
+    kapt deps.room.compiler
+
+
+    // Google - Firebase
+    implementation deps.firebase.core
+    implementation deps.firebase.messaging
+
+    // Google - Play Services
+    implementation deps.play_services.auth
+
+    // Reactive
+    implementation deps.rx.java
+    implementation deps.rx.android
+    implementation deps.rx.kotlin
+
+    // Event Bus
+    implementation deps.event_bus.runtime
+
+    // Networking
+    implementation deps.network.runtime
+    implementation deps.network.rxjava2
+    implementation deps.network.retrofit
+    implementation deps.network.retrofit_rx
+
+    // Loading image with Glide or Picasso
+    implementation deps.glide.runtime
+    kapt deps.glide.compiler
+
+    // Shape Image View
+    implementation deps.images.shape_img
+    implementation deps.images.circle_img
+
+    // Code generator for view
+
+    // implementation deps.butter_knife.runtime
+
+    // kapt deps.butter_knife.compiler
+
+    // Material Dialog (core, color, input, files)
+    implementation deps.material_dialog.core
+
+    // Logger
+    implementation deps.logger.timber
+    debugImplementation deps.logger.debug_db
+
+    // LeakCanary
+    debugImplementation deps.leakcanary.debug
+    debugImplementation deps.leakcanary.support
+
+    // Social Network (Facebook, KakaoTalk)
+    implementation deps.social.facebook
+    implementation deps.social.kakao_usermgmt
+    implementation deps.social.kakao_link
+    implementation deps.social.kakao_talk
+    // Amazon
+    implementation deps.amazon.sdk_s3
+
+    // Test dependencies for local unit tests and UI testing
+    testImplementation deps.mockito.core
+    androidTestImplementation deps.mockito.core, { exclude group: 'net.bytebuddy' }
+    testImplementation(deps.arch_core.testing, {
+        exclude group: 'com.android.support', module: 'support-compat'
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.android.support', module: 'support-core-utils'
+    })
+    testImplementation deps.atsl.junit
+    androidTestImplementation deps.atsl.runner
+    androidTestImplementation(deps.espresso.core, {
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.google.code.findbugs', module: 'jsr305'
+    })
+    androidTestImplementation deps.espresso.intents
+
+}
