@@ -221,6 +221,7 @@ material_dialog.files = "com.afollestad.material-dialogs:files:$versions.materia
 material_dialog.input = "com.afollestad.material-dialogs:input:$versions.material_dialog"
 deps.material_dialog = material_dialog
 
+
 def butter_knife = [:]
 butter_knife.runtime = "com.jakewharton:butterknife:$versions.butter_knife"
 butter_knife.compiler = "com.jakewharton:butterknife-compiler:$versions.butter_knife"
@@ -272,6 +273,7 @@ def static addRepos(RepositoryHandler handler) {
     handler.mavenCentral()
     handler.maven { url 'https://jitpack.io' }
     handler.maven { url 'https://maven.fabric.io/public' }
+    handler.maven {  url "https://maven.google.com" }
     handler.maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
     handler.maven { url 'http://devrepo.kakao.com:8088/nexus/content/groups/public/' }
     handler.flatDir { dirs 'libs' }

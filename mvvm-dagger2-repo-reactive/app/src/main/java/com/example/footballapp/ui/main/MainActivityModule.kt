@@ -8,6 +8,13 @@ import dagger.Provides
 @Module
 class MainActivityModule {
     @Provides
-    fun provideMainActivityViewModel(dataManager: DataManager,schedulerProvider: SchedulerProvider): MainActivityViewModel =
-        MainActivityViewModel(dataManager,schedulerProvider)
+    fun provideMainActivityViewModel(
+        dataManager: DataManager,
+        schedulerProvider: SchedulerProvider
+    ): MainActivityViewModel =
+        MainActivityViewModel(dataManager, schedulerProvider)
+
+    @Provides
+    fun provideMainViewPagerAdapter(activity: MainActivity): MainViewPagerAdapter =
+        MainViewPagerAdapter(activity.supportFragmentManager)
 }
