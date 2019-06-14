@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.example.footballapp.BR
 import com.example.footballapp.R
 import com.example.footballapp.databinding.ActivitySplashBinding
+import com.example.footballapp.ui.auth.AuthActivity
 import com.example.footballapp.ui.base.BaseActivity
 import com.example.footballapp.ui.main.MainActivity
 import javax.inject.Inject
@@ -24,11 +25,11 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, SplashViewModel>(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mViewModel.setNavigator(this)
-        mViewModel.nextActivity()
+        //mViewModel.nextActivity()
     }
 
     override fun goToMainActivity() {
-        startActivity(Intent(this, MainActivity::class.java))
+        startActivity(Intent(this, AuthActivity::class.java))
         finish()
     }
 }

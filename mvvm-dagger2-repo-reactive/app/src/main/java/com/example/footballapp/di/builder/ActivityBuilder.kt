@@ -1,5 +1,7 @@
 package com.example.footballapp.di.builder
 
+import com.example.footballapp.ui.auth.AuthActivity
+import com.example.footballapp.ui.auth.AuthActivityModule
 import com.example.footballapp.ui.main.MainActivity
 import com.example.footballapp.ui.main.MainActivityModule
 import com.example.footballapp.ui.main.chat.ChatFragmentProvider
@@ -25,4 +27,7 @@ abstract class ActivityBuilder {
 
     @ContributesAndroidInjector(modules = [SplashModule::class])
     abstract fun bindSplashActivity(): SplashActivity
+
+    @ContributesAndroidInjector(modules = [AuthActivityModule::class])
+    abstract fun bindAuthActivity(): AuthActivity
 }
