@@ -10,11 +10,15 @@ import com.example.footballapp.data.network.ApiHelper
 import com.example.footballapp.data.network.AppApiHelper
 import com.example.footballapp.data.prefs.AppPrefsHelper
 import com.example.footballapp.data.prefs.PrefsHelper
+import com.example.footballapp.di.PrefInfo
 import com.example.footballapp.utils.rx.AppSchedulerProvider
 import com.example.footballapp.utils.rx.SchedulerProvider
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
+import com.example.footballapp.utils.AppConstants
+
+
 
 
 @Module
@@ -38,6 +42,13 @@ class AppModule {
     fun provideApiHelper(appApiHelper: AppApiHelper): ApiHelper {
         return appApiHelper
     }
+
+    @Provides
+    @PrefInfo
+    fun providePreferenceName(): String {
+        return AppConstants.PREF_NAME
+    }
+
 
     @Provides
     @Singleton

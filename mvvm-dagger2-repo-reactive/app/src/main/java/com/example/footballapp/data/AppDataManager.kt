@@ -9,11 +9,16 @@ import javax.inject.Inject
 
 class AppDataManager @Inject constructor(val dbHelper: DbHelper, val prefs: PrefsHelper, val apiHelper: ApiHelper) :
     DataManager {
-    override fun test() {
-        Log.e("MainActivity", "AppDataManager run")
+    override fun testdbHelper() {
+        Log.e("AppDataManager", "AppDataManager testdbHelper")
+        dbHelper.testdbHelper()
+
     }
 
-    override fun performGetUsers(): Observable<*> = null!!
+    override fun performGetUsers(): Observable<*> {
+        Log.e("AppDataManager", "AppDataManager performGetUsers")
+        return apiHelper.performGetUsers()
+    }
 
     override fun getCurrentUserName(): String? = ""
 
@@ -22,6 +27,7 @@ class AppDataManager @Inject constructor(val dbHelper: DbHelper, val prefs: Pref
     }
 
     override fun clearData() {
+        Log.e("AppDataManager", "AppDataManager clearData")
         prefs.clearData()
     }
 }

@@ -38,6 +38,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainActivityViewModel>()
         super.onCreate(savedInstanceState)
         mMainViewModel.setNavigator(this)
         onInitView()
+        mMainViewModel.testCommunicateWithDatamanagerFromView()
     }
 
     private fun onInitView() {

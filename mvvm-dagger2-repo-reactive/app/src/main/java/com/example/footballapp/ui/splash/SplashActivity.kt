@@ -25,11 +25,11 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, SplashViewModel>(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mViewModel.setNavigator(this)
-        //mViewModel.nextActivity()
+        mViewModel.nextActivity()
     }
 
     override fun goToMainActivity() {
-        startActivity(Intent(this, AuthActivity::class.java))
+        startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
 }

@@ -2,9 +2,12 @@ package com.example.footballapp.data.prefs
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.util.Log
+import com.example.footballapp.di.PrefInfo
+import javax.inject.Inject
 
 
-class AppPrefsHelper constructor(private val context: Context, private val prefFileName: String) :
+class AppPrefsHelper @Inject constructor(private val context: Context, @PrefInfo private val prefFileName: String) :
     PrefsHelper {
 
 
@@ -28,6 +31,10 @@ class AppPrefsHelper constructor(private val context: Context, private val prefF
 
 
     // clear data
-    override fun clearData() = mPrefs.edit().clear().apply()
+//    override fun clearData() = mPrefs.edit().clear().apply()
+    override fun clearData() {
+        Log.e("AppDataManager", "AppPrefsHelper clearData")
+
+    }
 
 }
